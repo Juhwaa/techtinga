@@ -12,6 +12,7 @@ from django.utils import timezone
 
 from gestao.base import BaseModel
 from gestao.enumerations import LinguagemProgramacao, Status, TipoProjeto
+from gestao.managers import ProjetoManager, TarefaManager
 from gestao.validators import (
     validar_criacao_depois_inicio,
     validar_inicio_nao_passado,
@@ -46,6 +47,8 @@ class Projeto(BaseModel):
     fim = models.DateField(null=True, blank=True)
     orcamento = models.DecimalField(max_digits=12, decimal_places=2)
     ativo = models.BooleanField(default=True)
+
+    objects = ProjetoManager()
 
     def clean(self):
         super().clean()
@@ -125,6 +128,8 @@ class Tarefa(BaseModel):
     )
     criacao = models.DateTimeField()
     conclusao = models.DateTimeField(null=True, blank=True)
+
+    objects = TarefaManager()
 
     def clean(self):
         super().clean()

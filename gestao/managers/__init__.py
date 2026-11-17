@@ -1,0 +1,2 @@
+from gestao.managers.projeto_manager import ProjetoManager
+from gestao.managers.tarefa_manager import TarefaManager
